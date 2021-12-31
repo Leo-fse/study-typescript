@@ -1,9 +1,11 @@
-import { useRouter } from "next/router";
+import { Post } from "../../../components/Post";
 
 const PostId = () => {
-  const router = useRouter();
-  console.log(router.query.id);
-  return <div>{router.query.id}</div>;
+  return (
+    <div>
+      <Post />
+    </div>
+  );
 };
 
 export default PostId;
