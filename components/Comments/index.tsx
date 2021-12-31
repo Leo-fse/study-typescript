@@ -9,7 +9,7 @@ type comment = {
   body: string;
 };
 
-const users_url = "http://jsonplaceholder.typicode.com/comments/";
+const users_url = `${process.env.NEXT_PUBLIC_API_URL}/comments/`;
 
 export const CommentsComponent = () => {
   const { data, error, isLoading, isEmpty } = useGet(users_url);

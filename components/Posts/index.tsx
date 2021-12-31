@@ -8,7 +8,7 @@ type post = {
   body: string;
 };
 
-const url_posts = "http://jsonplaceholder.typicode.com/posts";
+const url_posts = `${process.env.NEXT_PUBLIC_API_URL}/posts`;
 
 export const PostsComponent = () => {
   const { data, error, isLoading, isEmpty } = useGet(url_posts);

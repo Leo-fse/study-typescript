@@ -2,12 +2,21 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
 
+type comment = {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+};
+
 export const Post = () => {
-  const API_URL = `http://jsonplaceholder.typicode.com`;
   const router = useRouter();
   const postId = router.query.id;
 
-  const post_url = postId ? `${API_URL}/posts/${postId}` : null;
+  const post_url = postId
+    ? `${process.env.NEXT_PUBLIC_API_URL}/posts/${postId}`
+    : null;
   const {
     data: post,
     error: postError,
@@ -15,7 +24,9 @@ export const Post = () => {
     isEmpty: postIsEmpty,
   } = useGet(post_url);
 
-  const user_url = post?.userId ? `${API_URL}/users/${post.userId}` : null;
+  const user_url = post?.userId
+    ? `${process.env.NEXT_PUBLIC_API_URL}/users/${post.userId}`
+    : null;
   const {
     data: user,
     error: userError,
@@ -23,7 +34,9 @@ export const Post = () => {
     isEmpty: userIsEmpty,
   } = useGet(user_url);
 
-  const comments_url = postId ? `${API_URL}/comments?postId=${postId}` : null;
+  const comments_url = postId
+    ? `${process.env.NEXT_PUBLIC_API_URL}/comments?postId=${postId}`
+    : null;
   const {
     data: comments,
     error: commentsError,
@@ -82,11 +95,4 @@ export const Post = () => {
       )}
     </div>
   );
-};
-type comment = {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
 };

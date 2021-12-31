@@ -7,7 +7,7 @@ export const Comment = () => {
 
   const commentId = router.query.id;
   const comment_url = commentId
-    ? `http://jsonplaceholder.typicode.com/comments/${commentId}`
+    ? `${process.env.NEXT_PUBLIC_API_URL}/comments/${commentId}`
     : null;
   const { data, error, isLoading, isEmpty } = useGet(comment_url);
 

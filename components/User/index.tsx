@@ -7,7 +7,7 @@ export const User = () => {
   const userId = router.query.id;
 
   const user_url = userId
-    ? `http://jsonplaceholder.typicode.com/users/${userId}`
+    ? `${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`
     : null;
   const { data, error, isLoading, isEmpty } = useGet(user_url);
 

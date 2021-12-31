@@ -14,7 +14,7 @@ type user = {
     geo: { lat: number; lng: number };
   };
 };
-const users_url = "http://jsonplaceholder.typicode.com/users/";
+const users_url = `${process.env.NEXT_PUBLIC_API_URL}/users/`;
 
 export const UsersComponet = () => {
   const { data, error, isLoading, isEmpty } = useGet(users_url);
