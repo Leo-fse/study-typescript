@@ -1,11 +1,9 @@
 import type { NextPage } from "next";
-import { Header } from "../components/Layout/Header";
 import { TwitterCard } from "../components/TwitterCard";
 
 const Home: NextPage = () => {
   return (
     <div>
-      <Header></Header>
       <TwitterCard
         type="retweet"
         retweetedUser="田中"
