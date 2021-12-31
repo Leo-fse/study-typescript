@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useGet } from "../hooks/useGet";
+import { useGet } from "../../hooks/useGet";
 
 type post = {
   userId: number;
@@ -20,7 +20,7 @@ const About: NextPage = () => {
         {data?.map((post: post) => {
           return (
             <li key={post.id}>
-              <Link href={`/post/${post.id}`}>{post.title}</Link>
+              <Link href={`/posts/${post.id}`}>{post.title}</Link>
             </li>
           );
         })}
