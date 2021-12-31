@@ -4,8 +4,8 @@ import { useGet } from "../../hooks/useGet";
 
 export const Comment = () => {
   const router = useRouter();
-  const commentId = router.query.id;
 
+  const commentId = router.query.id;
   const comment_url = commentId
     ? `http://jsonplaceholder.typicode.com/comments/${commentId}`
     : null;

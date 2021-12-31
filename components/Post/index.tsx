@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
 
 export const Post = () => {
+  const API_URL = `http://jsonplaceholder.typicode.com`;
   const router = useRouter();
   const postId = router.query.id;
-  const post_url = postId
-    ? `http://jsonplaceholder.typicode.com/posts/${postId}`
-    : null;
+
+  const post_url = postId ? `${API_URL}/posts/${postId}` : null;
   const {
     data: post,
     error: postError,
@@ -15,16 +15,21 @@ export const Post = () => {
     isEmpty: postIsEmpty,
   } = useGet(post_url);
 
-  const user_url = post?.userId
-    ? `http://jsonplaceholder.typicode.com/users/${post.userId}`
-    : null;
-
+  const user_url = post?.userId ? `${API_URL}/users/${post.userId}` : null;
   const {
     data: user,
     error: userError,
     isLoading: userIsLoading,
     isEmpty: userIsEmpty,
   } = useGet(user_url);
+
+  const comments_url = postId ? `${API_URL}/comments?postId=${postId}` : null;
+  const {
+    data: comments,
+    error: commentsError,
+    isLoading: commentsIsLoading,
+    isEmpty: commentsIsEmpty,
+  } = useGet(comments_url);
 
   return (
     <div>
@@ -40,12 +45,10 @@ export const Post = () => {
         <div>ローディング中</div>
       ) : (
         <div>
-          <h1 className="text-4xl">{post?.title}</h1>
           <p>{post?.body}</p>
         </div>
       )}
       <div className="text-8xl">USER</div>
-
       {userError ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : userIsEmpty ? (
@@ -59,6 +62,31 @@ export const Post = () => {
           <p>Phone : {user?.phone}</p>
         </div>
       )}
+      <div className="text-8xl">Comments</div>
+      {commentsError ? (
+        <div>エラーが発生してデータが取得できていません</div>
+      ) : commentsIsEmpty ? (
+        <div>取得データが0件でした</div>
+      ) : commentsIsLoading ? (
+        <div>ローディング中</div>
+      ) : (
+        <div>
+          {comments.map((item: comment, index: number) => {
+            return (
+              <ol key={index}>
+                <li>{`${index + 1}. ${item.body}`}</li>
+              </ol>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
+};
+type comment = {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
 };
