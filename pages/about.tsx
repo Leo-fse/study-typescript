@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import { usePosts } from "../hooks/usePosts";
 
 type post = {
@@ -22,7 +23,11 @@ const About: NextPage = () => {
   return (
     <ol>
       {data.map((post: post) => {
-        return <li key={post.id}>{post.title}</li>;
+        return (
+          <li key={post.id}>
+            <Link href={`/post/${post.id}`}>{post.title}</Link>
+          </li>
+        );
       })}
     </ol>
   );
