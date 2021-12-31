@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Header />
       <hr />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 }

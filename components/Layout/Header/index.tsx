@@ -1,10 +1,23 @@
 import Link from "next/link";
 
+const NAV_ITEMS = [
+  { href: "/", label: "TOP" },
+  { href: "/posts", label: "POSTS" },
+  { href: "/tweet", label: "TWEET" },
+];
+
 export const Header = () => {
   return (
-    <div className="p-2 m-2">
-      <Link href="/">INDEX</Link>
-      <Link href="/posts">POSTS</Link>
-    </div>
+    <header className="w-full h-28 border-b border-gray-500 flex justify-center items-center">
+      {NAV_ITEMS.map((item) => {
+        return (
+          <Link key={item.href} href={item.href}>
+            <a className="inline-block px-2 py-3 text-lg hover:text-blue-600">
+              {item.label}
+            </a>
+          </Link>
+        );
+      })}
+    </header>
   );
 };

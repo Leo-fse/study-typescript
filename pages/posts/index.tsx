@@ -10,12 +10,12 @@ type post = {
 };
 
 const url_posts = "http://jsonplaceholder.typicode.com/posts";
-const About: NextPage = () => {
+const Posts: NextPage = () => {
   const { data } = useGet(url_posts);
 
   return (
     <div>
-      <h1 className="text-8xl">ABOUT PAGE</h1>
+      <div className="text-4xl">POSTS PAGE</div>
       <ol>
         {data?.map((post: post) => {
           return (
@@ -29,4 +29,4 @@ const About: NextPage = () => {
   );
 };
 
-export default About;
+export default Posts;
