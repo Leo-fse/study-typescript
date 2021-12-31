@@ -2,7 +2,9 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { href: "/", label: "TOP" },
-  { href: "/posts", label: "POSTS" },
+  { href: "/posts", label: "Posts" },
+  { href: "/users", label: "Users" },
+  { href: "/comments", label: "Comments" },
   { href: "/tweet", label: "TWEET" },
 ];
 

@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import { TwitterCard } from "../../components/TwitterCard";
 
-const Tweet = () => {
+const Tweet: NextPage = () => {
   return (
     <div>
       <p className="text-4xl text-center">TypeScript講座で作成したページだよ</p>

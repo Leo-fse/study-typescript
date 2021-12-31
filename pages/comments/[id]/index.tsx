@@ -1,12 +1,12 @@
 import { NextPage } from "next";
-import { Post } from "../../../components/Post";
+import { Comment } from "../../../components/Comment";
 
-const PostId: NextPage = () => {
+const CommentId: NextPage = () => {
   return (
     <div className="w-[600px] min-h-screen px-0 py-2 flex flex-col items-center">
-      <Post />
+      <Comment />
     </div>
   );
 };
 
-export default PostId;
+export default CommentId;

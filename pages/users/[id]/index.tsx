@@ -1,12 +1,12 @@
 import { NextPage } from "next";
-import { Post } from "../../../components/Post";
+import { User } from "../../../components/User";
 
-const PostId: NextPage = () => {
+const UserId: NextPage = () => {
   return (
     <div className="w-[600px] min-h-screen px-0 py-2 flex flex-col items-center">
-      <Post />
+      <User />
     </div>
   );
 };
 
-export default PostId;
+export default UserId;
