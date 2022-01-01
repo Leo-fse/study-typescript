@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useGet } from "../../hooks/useGet";
+import { useFetchArray } from "../../hooks/useFetchArray";
 
 type comment = {
   postId: number;
@@ -11,8 +11,8 @@ type comment = {
 
 const users_url = `${process.env.NEXT_PUBLIC_API_URL}/comments/`;
 
-export const CommentsComponent = () => {
-  const { data, error, isLoading, isEmpty } = useGet(users_url);
+export const CommentList = () => {
+  const { data, error, isLoading, isEmpty } = useFetchArray(users_url);
   if (isLoading) {
     return <p>Loading...</p>;
   }

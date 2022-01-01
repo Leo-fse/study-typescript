@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { useGet } from "../../hooks/useGet";
+import { useFetchArray } from "../../hooks/useFetchArray";
 
-export const PostByUserId = (props: { id: number }) => {
+export const PostListByUserId = (props: { id: number }) => {
   const postByUserUrl = props.id
-    ? `${process.env.NEXT_PUBLIC_API_URL}/posts?userId=${props.id}`
+    ? `${process.env.NEXT_PUBLIC_API_URL}/users/${props.id}/posts`
     : null;
-  const { data, error, isLoading, isEmpty } = useGet(postByUserUrl);
+  const { data, error, isLoading, isEmpty } = useFetchArray(postByUserUrl);
 
   return (
     <div>

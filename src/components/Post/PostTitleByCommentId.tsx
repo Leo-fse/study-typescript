@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useGet } from "../../hooks/useGet";
-import { UserByUserId } from "../User/UserByUserId";
+import { useFetch } from "../../hooks/useFetch";
+import { UserNameByUserId } from "../User/UserNameByUserId";
 
 type comment = {
   postId: number;
@@ -11,7 +11,7 @@ type comment = {
   body: string;
 };
 
-export const PostByPostId = (props: { id: number }) => {
+export const PostTitleByCommentId = (props: { id: number }) => {
   const post_url = props.id
     ? `${process.env.NEXT_PUBLIC_API_URL}/posts/${props.id}`
     : null;
@@ -19,8 +19,7 @@ export const PostByPostId = (props: { id: number }) => {
     data: post,
     error: postError,
     isLoading: postIsLoading,
-    isEmpty: postIsEmpty,
-  } = useGet(post_url);
+  } = useFetch(post_url);
 
   return (
     <div>
@@ -29,8 +28,6 @@ export const PostByPostId = (props: { id: number }) => {
       </Head>
       {postError ? (
         <div>エラーが発生してデータが取得できていません</div>
-      ) : postIsEmpty ? (
-        <div>取得データが0件でした</div>
       ) : postIsLoading ? (
         <div>ローディング中</div>
       ) : (
@@ -38,7 +35,7 @@ export const PostByPostId = (props: { id: number }) => {
           <a className="text-lg hover:text-blue-500">{post?.title}</a>
         </Link>
       )}
-      <UserByUserId userId={post?.userId} />
+      <UserNameByUserId userId={post?.userId} />
     </div>
   );
 };

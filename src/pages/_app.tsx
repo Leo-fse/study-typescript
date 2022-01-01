@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
-import { Layout } from "../components/Layout";
+import { AppLayout } from "../layouts/Applayout";
 import "../styles/globals.css";
 
 const fetcher = async (url: string) => {
@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <SWRConfig value={{ fetcher }}>
-        <Layout>
+        <AppLayout>
           <Component {...pageProps} />
-        </Layout>
+        </AppLayout>
       </SWRConfig>
     </>
   );

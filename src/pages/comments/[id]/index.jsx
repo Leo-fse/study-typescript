@@ -1,12 +1,12 @@
 import { SWRConfig } from "swr";
-import { Comment } from "../../../components/Comment";
+import { CommentDetail } from "../../../components/Comment/CommentDetail";
 
 export const getStaticPaths = async () => {
-  const comments = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comments?`)
-  const commentsData = await comments.json()
+  const comments = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comments?`);
+  const commentsData = await comments.json();
   const paths = commentsData.map((comment) => ({
-    params: {id: comment.id.toString()},
-  }))
+    params: { id: comment.id.toString() },
+  }));
   return {
     paths,
     fallback: "blocking",
@@ -19,11 +19,11 @@ export const getStaticProps = async (ctx) => {
   const comment = await fetch(COMMENT_API_URL);
   if (!comment.ok) {
     return {
-      notFound:true,
-      revalidate:1
-    }
+      notFound: true,
+      revalidate: 1,
+    };
   }
-  
+
   const commentData = await comment.json();
 
   return {
@@ -41,7 +41,7 @@ const CommentId = (props) => {
 
   return (
     <SWRConfig value={{ fallback }}>
-      <Comment />
+      <CommentDetail />
     </SWRConfig>
   );
 };

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useGet } from "../../hooks/useGet";
+import { useFetchArray } from "../../hooks/useFetchArray";
 
 type user = {
   id: number;
@@ -16,8 +16,8 @@ type user = {
 };
 const users_url = `${process.env.NEXT_PUBLIC_API_URL}/users/`;
 
-export const UsersComponet = () => {
-  const { data, error, isLoading, isEmpty } = useGet(users_url);
+export const UserList = () => {
+  const { data, error, isLoading, isEmpty } = useFetchArray(users_url);
   if (isLoading) {
     return <p>...Loading</p>;
   }

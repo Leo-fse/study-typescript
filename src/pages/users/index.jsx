@@ -1,6 +1,5 @@
 import { SWRConfig } from "swr";
-import { Header } from "../../components/Header";
-import { UsersComponet } from "../../components/Users";
+import { UserList } from "../../components/User/UserList";
 
 export const getServerSideProps = async () => {
   const USERS_API_URL = `${process.env.NEXT_PUBLIC_API_URL}/users`;
@@ -19,8 +18,7 @@ const Users = (props) => {
   const { fallback } = props;
   return (
     <SWRConfig value={{ fallback }}>
-      <Header />
-      <UsersComponet />
+      <UserList />
     </SWRConfig>
   );
 };

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useGet } from "../../hooks/useGet";
+import { useFetchArray } from "../../hooks/useFetchArray";
 
 type post = {
   userId: number;
@@ -10,8 +10,8 @@ type post = {
 
 const url_posts = `${process.env.NEXT_PUBLIC_API_URL}/posts`;
 
-export const PostsComponent = () => {
-  const { data, error, isLoading, isEmpty } = useGet(url_posts);
+export const PostList = () => {
+  const { data, error, isLoading, isEmpty } = useFetchArray(url_posts);
 
   if (isLoading) {
     return <p>Loading...</p>;

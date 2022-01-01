@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useGet } from "../../hooks/useGet";
+import { useFetchArray } from "../../hooks/useFetchArray";
 
-export const CommentsByPostId = (props: {
+export const CommentListByPostId = (props: {
   postId: string | string[] | undefined;
 }) => {
   const comment_url = props.postId
-    ? `${process.env.NEXT_PUBLIC_API_URL}/comments/?postId=${props.postId}`
+    ? `${process.env.NEXT_PUBLIC_API_URL}/posts/${props.postId}/comments`
     : null;
-  const { data, error, isLoading, isEmpty } = useGet(comment_url);
+  const { data, error, isLoading } = useFetchArray(comment_url);
 
   return (
     <div>
@@ -17,8 +17,6 @@ export const CommentsByPostId = (props: {
       </Head>
       {error ? (
         <div>エラーが発生してデータが取得できていません</div>
-      ) : isEmpty ? (
-        <div>取得データが0件でした</div>
       ) : isLoading ? (
         <div>ローディング中</div>
       ) : (

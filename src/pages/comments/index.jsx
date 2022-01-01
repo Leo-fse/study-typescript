@@ -1,6 +1,5 @@
 import { SWRConfig } from "swr";
-import { CommentsComponent } from "../../components/Comments";
-import { Header } from "../../components/Header";
+import { CommentList } from "../../components/Comment/CommentList";
 
 export const getStaticProps = async () => {
   const COMMENTS_API_URL = `${process.env.NEXT_PUBLIC_API_URL}/comments`;
@@ -21,8 +20,7 @@ const Comments = (props) => {
   const { fallback } = props;
   return (
     <SWRConfig value={{ fallback }}>
-      <Header />
-      <CommentsComponent />
+      <CommentList />
     </SWRConfig>
   );
 };
