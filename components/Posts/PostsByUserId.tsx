@@ -17,24 +17,29 @@ export const PostByUserId = (props: { id: number }) => {
       ) : isLoading ? (
         <div>ローディング中</div>
       ) : (
-        data.map(
-          (
-            item: { id: number; title: string; body: string },
-            index: number
-          ) => {
-            return (
-              <div key={item.id}>
-                <ol>
-                  <li>
-                    <Link href={`/posts/${item.id}`}>{`${index + 1}. ${
-                      item.title
-                    }`}</Link>
-                  </li>
-                </ol>
-              </div>
-            );
-          }
-        )
+        <ul>
+          {data.map(
+            (
+              item: { id: number; title: string; body: string },
+              index: number
+            ) => {
+              return (
+                <li key={item.id}>
+                  <Link href={`/posts/${item.id}`}>
+                    <a className="block group">
+                      <h1 className="text-xl font-bold group-hover:text-blue-500">
+                        {item.title}
+                      </h1>
+                      <p className="text-lg text-gray-500 group-hover:text-blue-300">
+                        {item.body}
+                      </p>
+                    </a>
+                  </Link>
+                </li>
+              );
+            }
+          )}
+        </ul>
       )}
     </div>
   );

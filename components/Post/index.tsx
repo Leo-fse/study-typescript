@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
 import { CommentsByPostId } from "../Comments/CommentsByPostId";
+import { Header } from "../Header";
 import { UserByUserId } from "../User/UserByUserId";
 
 type comment = {
@@ -31,7 +32,7 @@ export const Post = () => {
       <Head>
         <title>{post?.title}</title>
       </Head>
-      <div className="text-4xl">Post Page</div>
+      <Header />
       {postError ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : postIsEmpty ? (
@@ -40,15 +41,15 @@ export const Post = () => {
         <div>ローディング中</div>
       ) : (
         <div>
-          <p className="text-blue-600">Post Title</p>
-          <p className="pl-4">{post.title}</p>
-          <p className="text-blue-600">Post Body</p>
-          <p className="pl-4">{post.body}</p>
+          <UserByUserId userId={post?.userId} />
+          <h1 className="text-3xl font-bold">{post.title}</h1>
+          <p className="text-xl text-gray-900 mt-2">{post.body}</p>
+          <h2 className="text-xl font-bold mt-10">コメント一覧</h2>
+          <div className="mt-2">
+            <CommentsByPostId postId={postId} />
+          </div>
         </div>
       )}
-      <UserByUserId userId={post?.userId} />
-      <p className="text-green-600">Comment</p>
-      <CommentsByPostId postId={postId} />
     </div>
   );
 };

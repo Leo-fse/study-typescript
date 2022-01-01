@@ -27,7 +27,6 @@ export const PostByPostId = (props: { id: number }) => {
       <Head>
         <title>{post?.title}</title>
       </Head>
-      <div className="text-4xl">Post</div>
       {postError ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : postIsEmpty ? (
@@ -35,11 +34,9 @@ export const PostByPostId = (props: { id: number }) => {
       ) : postIsLoading ? (
         <div>ローディング中</div>
       ) : (
-        <div>
-          <p>
-            <Link href={`/posts/${post.id}`}>{post?.body}</Link>
-          </p>
-        </div>
+        <Link href={`/posts/${post.id}`}>
+          <a className="text-lg hover:text-blue-500">{post?.title}</a>
+        </Link>
       )}
       <UserByUserId userId={post?.userId} />
     </div>

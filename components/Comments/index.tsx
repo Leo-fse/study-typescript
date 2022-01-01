@@ -25,18 +25,17 @@ export const CommentsComponent = () => {
 
   return (
     <div>
-      <p className="text-4xl">COMMENTS PAGE</p>
-      <ol>
+      <ul className="space-y-2">
         {data?.map((item: comment, index: number) => {
           return (
-            <li key={item.id}>
+            <li key={item.id} className="border-b pb-2">
               <Link href={`comments/${item.id}`}>
-                <a>{`${index + 1}. ${item.body}`}</a>
+                <a className="block hover:text-blue-500">{`${item.body}`}</a>
               </Link>
             </li>
           );
         })}
-      </ol>
+      </ul>
     </div>
   );
 };

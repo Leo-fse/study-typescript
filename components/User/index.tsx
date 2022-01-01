@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
+import { Header } from "../Header";
 import { PostByUserId } from "../Posts/PostsByUserId";
 
 export const User = () => {
@@ -18,6 +19,7 @@ export const User = () => {
       <Head>
         <title>{data?.title}</title>
       </Head>
+      <Header />
       {error ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : isEmpty ? (
@@ -26,18 +28,20 @@ export const User = () => {
         <div>ローディング中</div>
       ) : (
         <div>
-          <p className="text-2xl">{data.name}</p>
-          <p className="text-xl">詳細</p>
-          <ul>
-            <li>{`E-mail : ${data.email}`}</li>
-            <li>{`USERNAME : ${data.username}`}</li>
-            <li>{`CITY : ${data.address.city}`}</li>
-            <li>{`PHONE : ${data.phone}`}</li>
-            <li>{`WEB : ${data.website}`}</li>
-            <li>{`COMPANY : ${data.company.name}`}</li>
+          <h1 className="font-bold text-3xl">{data.name}</h1>
+          <h2 className="text-xl font-bold mt-10">詳細</h2>
+          <ul className="list-inside list-disc mt-2 text-xl">
+            <li>{`アカウント名 : ${data.username}`}</li>
+            <li>{`メール : ${data.email}`}</li>
+            <li>{`電話番号 : ${data.phone}`}</li>
+            <li>{`WEBサイト : ${data.website}`}</li>
+            <li>{`住所 : ${data.address.city}`}</li>
+            <li>{`勤務先 : ${data.company.name}`}</li>
           </ul>
-          <p className="text-xl">記事一覧</p>
-          <PostByUserId id={data.id} />
+          <p className="text-xl font-bold mt-2">投稿</p>
+          <div className="mt-10">
+            <PostByUserId id={data.id} />
+          </div>
         </div>
       )}
     </div>

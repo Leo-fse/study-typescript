@@ -24,18 +24,20 @@ export const PostsComponent = () => {
   }
   return (
     <div>
-      <p className="text-4xl">POSTS PAGE</p>
-      <ol>
+      <ul className="space-y-4">
         {data?.map((post: post, index: number) => {
           return (
             <li key={post.id}>
               <Link href={`/posts/${post.id}`}>
-                <a>{`${index + 1}. ${post.title}`}</a>
+                <a className="block group">
+                  <h1 className="text-xl font-bold group-hover:text-blue-500">{`${post.title}`}</h1>
+                  <p className="text-lg text-gray-500 group-hover:text-blue-400">{`${post.body}`}</p>
+                </a>
               </Link>
             </li>
           );
         })}
-      </ol>
+      </ul>
     </div>
   );
 };

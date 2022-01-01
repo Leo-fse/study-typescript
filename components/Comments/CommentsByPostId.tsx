@@ -20,27 +20,24 @@ export const CommentsByPostId = (props: { postId: number }) => {
       ) : isLoading ? (
         <div>ローディング中</div>
       ) : (
-        data?.map(
-          (
-            item: { id: number; postId: number; name: string; body: string },
-            index: number
-          ) => {
-            return (
-              <div key={item.id}>
-                <ol>
-                  <li>
-                    <Link href={`/comments/${item.id}`}>
-                      <a>{`${index + 1}. ${item.name}`}</a>
-                    </Link>
-                    <ol>
-                      <li className="text-gray-600 pl-4">{`${item.body}`}</li>
-                    </ol>
-                  </li>
-                </ol>
-              </div>
-            );
-          }
-        )
+        <ul className="space-y-2">
+          {data?.map(
+            (
+              item: { id: number; postId: number; name: string; body: string },
+              index: number
+            ) => {
+              return (
+                <li key={item.id} className="border-b pb-2">
+                  <Link href={`/comments/${item.id}`}>
+                    <a className="block hover:text-blue-500">
+                      {`${item.body}`}
+                    </a>
+                  </Link>
+                </li>
+              );
+            }
+          )}
+        </ul>
       )}
     </div>
   );

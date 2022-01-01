@@ -23,9 +23,8 @@ export const UserByUserId = (props: { userId: number }) => {
       ) : (
         <div>
           <Link href={`/users/${data.id}`}>
-            <a>
-              <p className="text-red-600">{`Created By`}</p>
-              <p className="pl-4">{`${data.name}`}</p>
+            <a className="hover:text-blue-500">
+              <p className="text-lg">{`Created By ${data.name}`}</p>
             </a>
           </Link>
         </div>

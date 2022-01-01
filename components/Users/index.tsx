@@ -29,18 +29,20 @@ export const UsersComponet = () => {
   }
   return (
     <div>
-      <p className="text-4xl">USERS PAGE</p>
-      <ol>
+      <ul className="grid grid-cols-2 gap-6">
         {data?.map((item: user, index: number) => {
           return (
             <li key={item.id}>
               <Link href={`/users/${item.id}`}>
-                <a>{`${index + 1}. ${item.name}(${item.email})`}</a>
+                <a className="block p-4 shadow rounded hover:bg-gray-200">
+                  <h1 className="text-xl font-bold truncate">{item.name}</h1>
+                  <div className="text-lg truncate">{item.email}</div>
+                </a>
               </Link>
             </li>
           );
         })}
-      </ol>
+      </ul>
     </div>
   );
 };

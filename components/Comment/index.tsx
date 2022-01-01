@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
+import { Header } from "../Header";
 import { PostByPostId } from "../Post/PostByPostId";
 
 export const Comment = () => {
@@ -17,6 +18,7 @@ export const Comment = () => {
       <Head>
         <title>{data?.title}</title>
       </Head>
+      <Header />
       {error ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : isEmpty ? (
@@ -25,14 +27,14 @@ export const Comment = () => {
         <div>ローディング中</div>
       ) : (
         <div>
-          <h1 className="text-4xl">{data?.title}</h1>
-          <p className="text-4xl">{data?.body}</p>
-          <ol>
-            <li>Created By {data?.name}</li>
-            <li>E-mail {data?.email}</li>
-          </ol>
-          <div>元の記事</div>
-          <PostByPostId id={data.postId} />
+          <div className="text-lg">
+            {data.name} ({data.email})
+          </div>
+          <h1 className="text-3xl font-bold">{data.body}</h1>
+          <h2 className="text-xl font-bold mt-10">元の記事</h2>
+          <div className="mt-2">
+            <PostByPostId id={data.postId} />
+          </div>
         </div>
       )}
     </div>
