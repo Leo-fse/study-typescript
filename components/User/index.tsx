@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
-import { Header } from "../Header";
 import { PostByUserId } from "../Posts/PostsByUserId";
 
 export const User = () => {
@@ -12,14 +11,12 @@ export const User = () => {
     ? `${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`
     : null;
   const { data, error, isLoading, isEmpty } = useGet(user_url);
-  console.log(data);
 
   return (
     <div>
       <Head>
         <title>{data?.title}</title>
       </Head>
-      <Header />
       {error ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : isEmpty ? (

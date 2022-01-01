@@ -6,7 +6,6 @@ export const PostByUserId = (props: { id: number }) => {
     ? `${process.env.NEXT_PUBLIC_API_URL}/posts?userId=${props.id}`
     : null;
   const { data, error, isLoading, isEmpty } = useGet(postByUserUrl);
-  console.log(postByUserUrl);
 
   return (
     <div>
