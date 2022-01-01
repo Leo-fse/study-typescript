@@ -15,7 +15,7 @@ type comment = {
 
 export const Post = () => {
   const router = useRouter();
-  const postId = router.query.id;
+  const postId: string | string[] | undefined = router.query.id;
 
   const post_url = postId
     ? `${process.env.NEXT_PUBLIC_API_URL}/posts/${postId}`
