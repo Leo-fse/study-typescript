@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import { SWRConfig } from "swr";
 import { Header } from "../../components/Header";
 import { UsersComponet } from "../../components/Users";
@@ -16,7 +15,7 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Users: NextPage = (props) => {
+const Users = (props) => {
   const { fallback } = props;
   return (
     <SWRConfig value={{ fallback }}>
