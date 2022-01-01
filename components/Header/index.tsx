@@ -10,11 +10,11 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   return (
-    <header className="w-full h-28 border-b border-gray-500 flex justify-center items-center">
+    <header className="flex justify-center items-center border-b w-full h-24">
       {NAV_ITEMS.map((item) => {
         return (
           <Link key={item.href} href={item.href}>
-            <a className="inline-block px-2 py-3 text-lg hover:text-blue-600">
+            <a className="inline-block px-6 py-2 text-xl hover:text-blue-500 focus:text-blue-500 active:text-blue-500">
               {item.label}
             </a>
           </Link>
