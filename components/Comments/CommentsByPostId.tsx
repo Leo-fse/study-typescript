@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useGet } from "../../hooks/useGet";
 
-export const CommentsByPostId = (props: any) => {
+export const CommentsByPostId = (props: { postId: number }) => {
   const comment_url = props.postId
     ? `${process.env.NEXT_PUBLIC_API_URL}/comments/?postId=${props.postId}`
     : null;
