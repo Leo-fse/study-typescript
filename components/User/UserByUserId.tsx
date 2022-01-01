@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useGet } from "../../hooks/useGet";
 
 export const UserByUserId = (props: { userId: number }) => {
@@ -11,7 +12,7 @@ export const UserByUserId = (props: { userId: number }) => {
   return (
     <div>
       <Head>
-        <title>{data?.title}</title>
+        <title>{data?.name}</title>
       </Head>
       {error ? (
         <div>エラーが発生してデータが取得できていません</div>
@@ -21,11 +22,12 @@ export const UserByUserId = (props: { userId: number }) => {
         <div>ローディング中</div>
       ) : (
         <div>
-          <p className="text-xl">{`Created By ${data.name}`}</p>
-          <ul>
-            <li>{`E-mail : ${data.email}`}</li>
-            <li>{`Phone : ${data.phone}`}</li>
-          </ul>
+          <Link href={`/users/${data.id}`}>
+            <a>
+              <p className="text-red-600">{`Created By`}</p>
+              <p className="pl-4">{`${data.name}`}</p>
+            </a>
+          </Link>
         </div>
       )}
     </div>

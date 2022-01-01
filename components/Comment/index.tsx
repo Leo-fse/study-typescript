@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
+import { PostByPostId } from "../Post/PostByPostId";
 
 export const Comment = () => {
   const router = useRouter();
@@ -30,6 +31,8 @@ export const Comment = () => {
             <li>Created By {data?.name}</li>
             <li>E-mail {data?.email}</li>
           </ol>
+          <div>元の記事</div>
+          <PostByPostId id={data.postId} />
         </div>
       )}
     </div>

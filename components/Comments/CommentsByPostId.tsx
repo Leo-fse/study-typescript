@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useGet } from "../../hooks/useGet";
 
 export const CommentsByPostId = (props: any) => {
@@ -12,7 +13,6 @@ export const CommentsByPostId = (props: any) => {
       <Head>
         <title>{data?.title}</title>
       </Head>
-      <p className="text-2xl">Comments</p>
       {error ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : isEmpty ? (
@@ -20,15 +20,27 @@ export const CommentsByPostId = (props: any) => {
       ) : isLoading ? (
         <div>ローディング中</div>
       ) : (
-        data?.map((item: { id: number; name: string }, index: number) => {
-          return (
-            <div key={item.id}>
-              <ol>
-                <li>{`${index + 1}. ${item?.name}`}</li>
-              </ol>
-            </div>
-          );
-        })
+        data?.map(
+          (
+            item: { id: number; postId: number; name: string; body: string },
+            index: number
+          ) => {
+            return (
+              <div key={item.id}>
+                <ol>
+                  <li>
+                    <Link href={`/comments/${item.id}`}>
+                      <a>{`${index + 1}. ${item.name}`}</a>
+                    </Link>
+                    <ol>
+                      <li className="text-gray-600 pl-4">{`${item.body}`}</li>
+                    </ol>
+                  </li>
+                </ol>
+              </div>
+            );
+          }
+        )
       )}
     </div>
   );

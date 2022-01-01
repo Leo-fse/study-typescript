@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useGet } from "../../hooks/useGet";
+import { PostByUserId } from "../Posts/PostsByUserId";
 
 export const User = () => {
   const router = useRouter();
@@ -10,6 +11,7 @@ export const User = () => {
     ? `${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`
     : null;
   const { data, error, isLoading, isEmpty } = useGet(user_url);
+  console.log(data);
 
   return (
     <div>
@@ -33,6 +35,8 @@ export const User = () => {
             <li>{data.website}</li>
             <li>{data.company.name}</li>
           </ul>
+          <p>記事一覧</p>
+          <PostByUserId id={data.id} />
         </div>
       )}
     </div>

@@ -1,7 +1,6 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { useGet } from "../../hooks/useGet";
-import { CommentsByPostId } from "../Comments/CommentsByPostId";
 import { UserByUserId } from "../User/UserByUserId";
 
 type comment = {
@@ -12,12 +11,9 @@ type comment = {
   body: string;
 };
 
-export const Post = () => {
-  const router = useRouter();
-  const postId = router.query.id;
-
-  const post_url = postId
-    ? `${process.env.NEXT_PUBLIC_API_URL}/posts/${postId}`
+export const PostByPostId = (props: { id: number }) => {
+  const post_url = props.id
+    ? `${process.env.NEXT_PUBLIC_API_URL}/posts/${props.id}`
     : null;
   const {
     data: post,
@@ -31,7 +27,7 @@ export const Post = () => {
       <Head>
         <title>{post?.title}</title>
       </Head>
-      <div className="text-4xl">Post Page</div>
+      <div className="text-4xl">Post</div>
       {postError ? (
         <div>エラーが発生してデータが取得できていません</div>
       ) : postIsEmpty ? (
@@ -40,15 +36,12 @@ export const Post = () => {
         <div>ローディング中</div>
       ) : (
         <div>
-          <p className="text-blue-600">Post Title</p>
-          <p className="pl-4">{post.title}</p>
-          <p className="text-blue-600">Post Body</p>
-          <p className="pl-4">{post.body}</p>
+          <p>
+            <Link href={`/posts/${post.id}`}>{post?.body}</Link>
+          </p>
         </div>
       )}
       <UserByUserId userId={post?.userId} />
-      <p className="text-green-600">Comment</p>
-      <CommentsByPostId postId={postId} />
     </div>
   );
 };
