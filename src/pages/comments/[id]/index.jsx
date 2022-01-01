@@ -2,7 +2,7 @@ import { SWRConfig } from "swr";
 import { CommentDetail } from "../../../components/Comment/CommentDetail";
 
 export const getStaticPaths = async () => {
-  const comments = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comments?`);
+  const comments = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comments`);
   const commentsData = await comments.json();
   const paths = commentsData.map((comment) => ({
     params: { id: comment.id.toString() },
