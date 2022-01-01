@@ -27,15 +27,16 @@ export const User = () => {
       ) : (
         <div>
           <p className="text-2xl">{data.name}</p>
+          <p className="text-xl">詳細</p>
           <ul>
-            <li>{data.email}</li>
-            <li>{data.username}</li>
-            <li>{data.address.city}</li>
-            <li>{data.phone}</li>
-            <li>{data.website}</li>
-            <li>{data.company.name}</li>
+            <li>{`E-mail : ${data.email}`}</li>
+            <li>{`USERNAME : ${data.username}`}</li>
+            <li>{`CITY : ${data.address.city}`}</li>
+            <li>{`PHONE : ${data.phone}`}</li>
+            <li>{`WEB : ${data.website}`}</li>
+            <li>{`COMPANY : ${data.company.name}`}</li>
           </ul>
-          <p>記事一覧</p>
+          <p className="text-xl">記事一覧</p>
           <PostByUserId id={data.id} />
         </div>
       )}
