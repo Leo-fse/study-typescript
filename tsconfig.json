@@ -21,7 +21,8 @@
     "**/*.tsx",
     "pages/comments/[id]/index.jsx",
     "pages/users/index.jsx",
-    "pages/comments/index.jsx"
+    "pages/comments/index.jsx",
+    "src/components/SSRComment/SSRCommentList.jsx"
   ],
   "exclude": ["node_modules"]
 }
