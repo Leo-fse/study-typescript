@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { href: "/users", label: "Users" },
   { href: "/comments", label: "Comments" },
   { href: "/ssrcomments", label: "SSRComments" },
-  { href: "/tweet", label: "TWEET" },
+  // { href: "/tweet", label: "TWEET" },
 ];
 
 export const Header = () => {
