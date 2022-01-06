@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { href: "/users", label: "Users" },
   { href: "/comments", label: "Comments" },
   { href: "/ssrcomments", label: "SSRComments" },
+  { href: "/testReducer", label: "testReducer" },
   // { href: "/tweet", label: "TWEET" },
 ];
 
